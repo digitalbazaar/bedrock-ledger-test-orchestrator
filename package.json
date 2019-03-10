@@ -1,0 +1,67 @@
+{
+  "name": "bedrock-ledger-test-orchestrator",
+  "version": "0.0.1-0",
+  "description": "",
+  "scripts": {
+    "start": "node --preserve-symlinks ./lib/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "axios": "^0.18.0",
+    "bedrock": "^1.0.0",
+    "bedrock-account": "^2.1.1",
+    "bedrock-did-client": "^1.1.2",
+    "bedrock-express": "^2.0.6",
+    "bedrock-identity": "^6.1.0",
+    "bedrock-jobs": "github:digitalbazaar/bedrock-jobs#3.x",
+    "bedrock-key": "^5.1.2",
+    "bedrock-mongodb": "^5.5.0",
+    "bedrock-passport": "^4.0.4",
+    "bedrock-permission": "^2.5.3",
+    "bedrock-quasar": "^1.0.0",
+    "bedrock-redis": "^3.4.0",
+    "bedrock-server": "^2.2.0",
+    "bedrock-validation": "^4.1.0",
+    "bedrock-views": "^6.0.0",
+    "bedrock-vue": "^1.0.0",
+    "bedrock-web": "^1.0.0",
+    "bedrock-webpack": "^2.0.0",
+    "uuid-random": "^1.0.6",
+    "vue": "^2.5.16",
+    "vue-json-formatter-editor": "mattcollier/vue-json-formatter-editor",
+    "vue-router": "^3.0.1",
+    "vuelidate": "^0.7.4"
+  },
+  "bedrock": {
+    "browserDependencies": [
+      "@fortawesome/fontawesome-free",
+      "axios",
+      "bedrock-quasar",
+      "bedrock-vue",
+      "vue",
+      "vue-router",
+      "vuelidate",
+      "vue-json-formatter-editor"
+    ],
+    "manifest": {
+      "@fortawesome/fontawesome-free": {
+        "main": null,
+        "less": [
+          "less/fontawesome.less",
+          "less/regular.less",
+          "less/solid.less"
+        ]
+      },
+      "axios": {
+        "main": "dist/axios.min.js"
+      }
+    }
+  },
+  "devDependencies": {
+    "eslint-config-digitalbazaar": "^1.3.0",
+    "eslint-plugin-jsdoc": "^4.1.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "jsdoc": "^3.5.5"
+  }
+}
