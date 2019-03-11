@@ -27,6 +27,8 @@
     "bedrock-vue": "^1.0.0",
     "bedrock-web": "^1.0.0",
     "bedrock-webpack": "^2.0.0",
+    "js-yaml": "^3.12.2",
+    "pkgcloud": "^1.7.0",
     "uuid-random": "^1.0.6",
     "vue": "^2.5.16",
     "vue-json-formatter-editor": "mattcollier/vue-json-formatter-editor",
