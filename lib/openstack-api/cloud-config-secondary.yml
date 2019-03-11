@@ -1,9 +1,0 @@
-#cloud-config
-runcmd:
- - sysctl vm.swappiness=10
- - [ sh, -xc, "echo vm.swappiness=10 >> /etc/sysctl.conf" ]
- - git clone https://github.com/digitalbazaar/bedrock-ledger-test.git
- - cd bedrock-ledger-test
- - [ sh, -xc, "echo _INSTANCECONFIG_ | base64 -d >> ./instance-config.yml" ] 
- - npm install
- - npm run secondary-aws >/dev/null 2>&1
