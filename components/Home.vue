@@ -25,7 +25,6 @@ const batteryTemplate = {
     startCount: 4,
     endCount: 4,
   },
-  nodes: 4,
   stages: {
     count: 1,
     duration: 3600000
@@ -50,8 +49,6 @@ export default {
   },
   methods: {
     async submit() {
-      console.log('bam!', typeof this.jsonData);
-      console.log('VVVVVVVVVV', this);
       const batteryConfig = JSON.parse(this.jsonData);
       await this.orchestratorService.addBattery({batteryConfig});
     }
