@@ -16,7 +16,7 @@
     "bedrock-did-client": "^1.1.2",
     "bedrock-express": "^2.0.6",
     "bedrock-identity": "^6.1.0",
-    "bedrock-jobs": "github:digitalbazaar/bedrock-jobs#3.x",
+    "bedrock-jobs": "^3.0.0",
     "bedrock-key": "^5.1.2",
     "bedrock-mongodb": "^5.5.0",
     "bedrock-passport": "^4.0.4",
@@ -36,7 +36,7 @@
     "vue-json-formatter-editor": "mattcollier/vue-json-formatter-editor",
     "vue-router": "^3.0.1",
     "vuelidate": "^0.7.4",
-    "web-ledger-client": "digitalbazaar/web-ledger-client#get-service-endpoint"
+    "web-ledger-client": "^3.0.0"
   },
   "bedrock": {
     "browserDependencies": [
