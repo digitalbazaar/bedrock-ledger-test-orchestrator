@@ -3,6 +3,7 @@
   "version": "0.0.1-0",
   "description": "",
   "scripts": {
+    "aws": "node --preserve-symlinks ./lib/index.js --aws",
     "start": "node --preserve-symlinks ./lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +11,7 @@
     "@fortawesome/fontawesome-free": "^5.7.2",
     "apisauce": "^1.0.2",
     "assert-plus": "^1.0.0",
+    "aws-instance-metadata": "github:digitalbazaar/aws-instance-metadata#got9",
     "axios": "^0.18.0",
     "bedrock": "^1.0.0",
     "bedrock-account": "^2.1.1",
