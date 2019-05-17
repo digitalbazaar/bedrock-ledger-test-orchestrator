@@ -1,0 +1,6 @@
+{
+   "user":    "yourUsername",
+   "password":"yourPassword",
+   "host":    "mail.digitalbazaar.com",
+   "ssl":     true
+}

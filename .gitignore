@@ -12,3 +12,4 @@ config.json
 config.yml
 instance-config.yml
 cloud-auth.yml
+email-server-info.json
