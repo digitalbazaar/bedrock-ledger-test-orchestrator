@@ -37,7 +37,7 @@
     "vue-json-formatter-editor": "mattcollier/vue-json-formatter-editor",
     "vue-router": "^3.0.1",
     "vuelidate": "^0.7.4",
-    "web-ledger-client": "^3.0.0"
+    "web-ledger-client": "digitalbazaar/web-ledger-client#timeout"
   },
   "bedrock": {
     "browserDependencies": [
