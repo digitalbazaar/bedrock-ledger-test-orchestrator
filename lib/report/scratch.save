@@ -1,0 +1,78 @@
+const result = await batteryCollection.aggregate([
+  {$match: {
+    'battery.id': batteryId,
+    'battery.stages.reports': {$exists: true}
+  }},
+  {$unwind: '$battery.stages'},
+  {$unwind: '$battery.stages.reports'},
+  // {$unwind: '$battery.stages.reports.stats'},
+  {$match: {'battery.stages.reports.vm.type': 'primary'}},
+  {$project: {
+    operationsPerSecond: '$battery.stages.operationsPerSecond',
+    sequence: '$battery.stages.sequence',
+    slice: {$slice: ['$battery.stages.reports.stats', -1]}
+  }},
+  {$unwind: '$slice'},
+  // {$group: {
+  //   _id: '$operationsPerSecond',
+  //   averageCpu: {
+  //     $avg: '$slice.monitors.os.currentLoad.avgload'
+  //   },
+  // }},
+  // {$sort: {_id: 1}}
+  {$project: {
+    createdDate: '$slice.createdDate',
+    operationsPerSecond: 1,
+    sequence: 1,
+    // y: {$objectToArray: '$$ROOT.slice.monitors'}
+    y: {
+      $filter: {
+        input: {$objectToArray: '$$ROOT.slice.monitors'},
+        as: 'd',
+        cond: {
+          $or: [
+            {$not: {$strcasecmp: ['$$d.k', 'nodeOs']}},
+            {$not: {
+              $strcasecmp: [
+                {$substrCP: ['$$d.k', 0, 10]},
+                'ledgerNode'
+              ]
+            }}
+          ]
+        }
+      }
+    }
+  }},
+  {$project: {
+    createdDate: 1,
+    operationsPerSecond: 1,
+    sequence: 1,
+    stats: {$arrayToObject: '$y'}
+    // x: {$arrayElemAt: ['$y', 0]}
+  }},
+  // {$project: {
+  //   createdDate: 1,
+  //   operationsPerSecond: 1,
+  //   continuity: '$x.v.continuity',
+  //   nodeOs: '$x.v.nodeOs',
+  // }},
+  {$sort: {sequence: 1}}
+
+  // {$sort: {'battery.stages.reports.stats.createdDate': 1}},
+  // {$group: {
+  //   _id: {
+  //     // sequence: '$battery.stages.sequence',
+  //     operationsPerSecond: '$battery.stages.operationsPerSecond',
+  //     // vm: '$battery.stages.reports.vm.details.ipAddress',
+  //   },
+  //   // _id: '$battery.stages.reports',
+  //   averageCpu: {
+  //     $avg: '$battery.stages.reports.stats.monitors.os.currentLoad.avgload'
+  //   },
+  // }},
+  // {$sort: {
+  //   // '_id.vm': 1,
+  //   // '_id.sequence': 1
+  //   '_id.operationsPerSecond': 1
+  // }}
+]).toArray();
