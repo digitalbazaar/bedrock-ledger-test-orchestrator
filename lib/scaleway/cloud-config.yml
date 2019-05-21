@@ -1,0 +1,11 @@
+#cloud-config
+runcmd:
+ - sysctl vm.swappiness=10
+ - [ sh, -xc, "echo vm.swappiness=10 >> /etc/sysctl.conf" ]
+ - git clone https://github.com/digitalbazaar/bedrock-ledger-test.git
+ - cd bedrock-ledger-test
+ - git checkout orchestrator
+ - [ sh, -xc, "echo _INSTANCECONFIG_ | base64 -d >> ./instance-config.yml" ]
+ - npm install
+ - node ./primary/index.js compile-less
+ - npm run baremetal >/dev/null 2>&1
