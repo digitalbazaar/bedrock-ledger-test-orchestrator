@@ -1,0 +1,8 @@
+#cloud-config
+runcmd:
+ - git clone https://github.com/digitalbazaar/bedrock-ledger-test-operation-generator.git
+ - cd bedrock-ledger-test-operation-generator
+ - git checkout orchestrator
+ - npm install
+ - npm run optimize
+ - npm run baremetal >/dev/null 2>&1
