@@ -9,7 +9,6 @@ StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=orchestrator
 User=ubuntu
-Group=ubuntu
 Environment=NODE_ENV=production
 
 [Install]
