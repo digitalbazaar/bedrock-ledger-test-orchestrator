@@ -1,0 +1,16 @@
+[Unit]
+Description=Orchestrator Service
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/bin/node --preserve-symlinks /home/ubuntu/bedrock-ledger-test-orchestrator/lib/index.js --aws 2>&1
+WorkingDirectory=/home/ubuntu/bedrock-ledger-test-orchestrator/
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=orchestrator
+User=ubuntu
+Group=ubuntu
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
