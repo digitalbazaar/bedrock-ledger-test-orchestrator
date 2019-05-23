@@ -8,7 +8,6 @@ WorkingDirectory=/home/ubuntu/bedrock-ledger-test-orchestrator/
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=orchestrator
-User=ubuntu
 Environment=NODE_ENV=production
 
 [Install]
