@@ -24,7 +24,6 @@ write_files:
      IGJyaWRnZQo=
    owner: root:root
    path: "/run/docker-compose.yml"
-write_files:
  - encoding: b64
    content: _ENVFILE_
    owner: root:root
