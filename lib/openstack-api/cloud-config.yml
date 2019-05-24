@@ -1,11 +1,39 @@
 #cloud-config
+apt_upgrade: true
+packages:
+ - docker.io
+ - nano
+write_files:
+ - encoding: b64
+   content: |
+     dmVyc2lvbjogJzMnCgpzZXJ2aWNlczoKICBiZWRyb2NrLWxlZGdlci10ZXN0OgogICAgIyBidWls
+     ZDoKICAgICAgIyBjb250ZXh0OiAuCiAgICAgICMgZG9ja2VyZmlsZTogRG9ja2VyZmlsZQogICAg
+     aW1hZ2U6IG1hdHRjb2xsaWVyL2JlZHJvY2s6YmVkcm9jay1sZWRnZXItdGVzdAogICAgY29udGFp
+     bmVyX25hbWU6IGJlZHJvY2stbGVkZ2VyLXRlc3QKICAgIHJlc3RhcnQ6IHVubGVzcy1zdG9wcGVk
+     CiAgICAjIGVudl9maWxlOiAuZW52CiAgICAjIGVudmlyb25tZW50OgogICAgcG9ydHM6CiAgICAg
+     IC0gIjE4NDQzOjE4NDQzIgogICAgIyB2b2x1bWVzOgogICAgbmV0d29ya3M6CiAgICAgIC0gYXBw
+     LW5ldHdvcmsKICBtb25nby1kb2NrZXI6CiAgICBpbWFnZTogbW9uZ286bGF0ZXN0CiAgICBjb250
+     YWluZXJfbmFtZTogbW9uZ28tZG9ja2VyCiAgICByZXN0YXJ0OiB1bmxlc3Mtc3RvcHBlZAogICAg
+     IyBlbnZfZmlsZTogLmVudgogICAgIyBlbnZpcm9ubWVudDoKICAgICAgIyAtIE1PTkdPX0lOSVRE
+     Ql9ST09UX1VTRVJOQU1FPSRNT05HT19VU0VSTkFNRQogICAgICAjIC0gTU9OR09fSU5JVERCX1JP
+     T1RfUEFTU1dPUkQ9JE1PTkdPX1BBU1NXT1JECiAgICAjIHZvbHVtZXM6CiAgICAgICMgLSBkYmRh
+     dGE6L2RhdGEvZGIKICAgIG5ldHdvcmtzOgogICAgICAtIGFwcC1uZXR3b3JrCiAgcmVkaXMtZG9j
+     a2VyOgogICAgaW1hZ2U6IHJlZGlzOmxhdGVzdAogICAgY29udGFpbmVyX25hbWU6IHJlZGlzLWRv
+     Y2tlcgogICAgcmVzdGFydDogdW5sZXNzLXN0b3BwZWQKICAgIG5ldHdvcmtzOgogICAgICAtIGFw
+     cC1uZXR3b3JrCm5ldHdvcmtzOgogIGFwcC1uZXR3b3JrOgogICAgZHJpdmVyOiBicmlkZ2UK
+   owner: root:root
+   path: "/run/docker-compose.yml"
+write_files:
+ - encoding: b64
+   content: _ENVFILE_
+   owner: root:root
+   path: "/run/docker-compose.env"
 runcmd:
- - sysctl vm.swappiness=10
- - [ sh, -xc, "echo vm.swappiness=10 >> /etc/sysctl.conf" ]
- - git clone https://github.com/digitalbazaar/bedrock-ledger-test.git
- - cd bedrock-ledger-test
- - git checkout orchestrator
- - [ sh, -xc, "echo _INSTANCECONFIG_ | base64 -d >> ./instance-config.yml" ]
- - npm install
- - node ./primary/index.js compile-less
- - npm run primary-aws >/dev/null 2>&1
+ - timedatectl set-timezone America/New_York
+ - systemctl enable docker
+ - systemctl start docker
+ - cd /run
+ - curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ - chmod +x /usr/local/bin/docker-compose
+ - ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+ - docker-compose up -d
