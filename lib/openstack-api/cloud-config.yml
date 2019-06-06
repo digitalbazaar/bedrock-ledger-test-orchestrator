@@ -1,3 +1,4 @@
+## template: jinja
 #cloud-config
 apt_upgrade: true
 packages:
@@ -25,8 +26,8 @@ write_files:
      ZXI6IGJyaWRnZQo=
    owner: root:root
    path: "/run/docker-compose.yml"
- - encoding: b64
-   content: _ENVFILE_
+   content: |
+    _ENVFILE_
    owner: root:root
    path: "/run/docker-compose.env"
 runcmd:
