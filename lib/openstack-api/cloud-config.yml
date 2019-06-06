@@ -27,7 +27,7 @@ write_files:
    owner: root:root
    path: "/run/docker-compose.yml"
  - content: |
-     {{ indent('_ENVFILE_', 6) }} 
+     {{ _ENVFILE_ }} 
    owner: root:root
    path: "/run/docker-compose.env"
 runcmd:
