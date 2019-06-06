@@ -26,7 +26,7 @@ write_files:
      ZXI6IGJyaWRnZQo=
    owner: root:root
    path: "/run/docker-compose.yml"
-   content: |
+ - content: |
      _ENVFILE_
    owner: root:root
    path: "/run/docker-compose.env"
