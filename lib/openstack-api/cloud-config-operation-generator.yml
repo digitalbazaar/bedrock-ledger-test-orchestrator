@@ -4,5 +4,4 @@ runcmd:
  - cd bedrock-ledger-test-operation-generator
  - git checkout workerpool
  - npm install
- - npm run optimize
  - npm run aws >/dev/null 2>&1
