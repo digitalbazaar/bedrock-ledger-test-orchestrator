@@ -32,7 +32,8 @@ const batteryTemplate = {
   operationsPerSecond: {
     startCount: 1,
     endCount: 2,
-  }
+  },
+  dockerTag: 'latest',
 };
 
 export default {
