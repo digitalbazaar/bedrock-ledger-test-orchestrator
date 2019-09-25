@@ -27,7 +27,7 @@ const batteryTemplate = {
   },
   stages: {
     count: 1,
-    duration: 3600000
+    duration: 1800000
   },
   operationsPerSecond: {
     startCount: 1,
