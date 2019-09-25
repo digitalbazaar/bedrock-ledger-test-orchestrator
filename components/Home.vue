@@ -30,8 +30,8 @@ const batteryTemplate = {
     duration: 1800000
   },
   operationsPerSecond: {
-    startCount: 1,
-    endCount: 2,
+    startCount: 100,
+    endCount: 100,
   },
   dockerTag: 'latest',
 };
