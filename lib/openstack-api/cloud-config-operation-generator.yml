@@ -6,9 +6,25 @@ ssh_authorized_keys:
  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEISX9G3/cVXVLfJNq8uWUaI+kIJWn2mS5uXuqYD9XY0lBvT5zxEt4yjrPzeJh/9smT82TZRlzlW6HdyFEJz79QIyQhOGNktMx9h8tk3y4XdejGEJ1AqEVUavvOurim5/0mPeEeFZ8wCi58dOFz03LArBT9AjSPOzBleK+hm96hMANoie+NE3ZhMgtijNCDfeH/9pvpeNK7CSaJIHhkwQCUuVKJa3rrmr2n0WNYFxelhhu4jtzkOzUGRHnHKXCqesyKwuKyABcm/fkge8opOfsNb1ISoNy8w2GBBcPPTNQxN7FYMOQcmZaQM+mbpVpx8nCX7os1vATSIT3aq/hAWPJ mcollier@yuna
  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWavAnpCVUee6dVS5NsqKvB+FQVhwM2vA6IqWXEnsU9 gannan@digitalbazaar.com
  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOf2kc0+zQVkrel1KHv9KWWU1I6j3VfgM9LcZiAwPPJU mcollier@digitalbazaar.com
+packages:
+ - docker.io
+ - nano
+write_files:
+ - encoding: b64
+   content: |
+     _DOCKER_COMPOSE_
+   owner: root:root
+   path: "/run/docker-compose.yml"
+ - content: |
+     _ENVFILE_
+   owner: root:root
+   path: "/run/docker-compose.env"
 runcmd:
- - git clone https://github.com/digitalbazaar/bedrock-ledger-test-operation-generator.git
- - cd bedrock-ledger-test-operation-generator
- - git checkout workerpool
- - npm install
- - npm run aws >/dev/null 2>&1
+ - timedatectl set-timezone America/New_York
+ - systemctl enable docker
+ - systemctl start docker
+ - cd /run
+ - curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ - chmod +x /usr/local/bin/docker-compose
+ - ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+ - docker-compose up -d

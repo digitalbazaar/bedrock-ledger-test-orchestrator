@@ -1,0 +1,42 @@
+{
+  "version": "3",
+  "services": {
+    "bedrock-ledger-test-operation-generator": {
+      "image": "digitalbazaar/bedrock-ledger-test-operation-generator:latest",
+      "container_name": "bedrock-ledger-test-operation-generator",
+      "restart": "unless-stopped",
+      "depends_on": [
+        "mongo-docker",
+        "redis-docker"
+      ],
+      "env_file": "docker-compose.env",
+      "ports": [
+        "18443:18443"
+      ],
+      "networks": [
+        "app-network"
+      ]
+    },
+    "mongo-docker": {
+      "image": "mongo:latest",
+      "container_name": "mongo-docker",
+      "restart": "unless-stopped",
+      "networks": [
+        "app-network"
+      ]
+    },
+    "redis-docker": {
+      "image": "redis:latest",
+      "container_name": "redis-docker",
+      "restart": "unless-stopped",
+      "networks": [
+        "app-network"
+      ]
+    }
+  },
+  "networks": {
+    "app-network": {
+      "driver": "bridge"
+    }
+  }
+}
