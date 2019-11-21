@@ -27,6 +27,7 @@
     "bedrock-permission": "^2.5.3",
     "bedrock-quasar": "^1.0.0",
     "bedrock-redis": "^3.4.0",
+    "bedrock-security-context": "^3.0.0",
     "bedrock-server": "^2.2.0",
     "bedrock-validation": "^4.1.0",
     "bedrock-veres-one-context": "^10.0.0",
