@@ -18,7 +18,7 @@
     "bedrock-did-client": "^1.1.2",
     "bedrock-express": "^2.0.6",
     "bedrock-identity": "^6.1.0",
-    "bedrock-jobs": "^3.0.0",
+    "bedrock-jobs": "digitalbazaar/bedrock-jobs#upgrade-bull",
     "bedrock-jsonld-document-loader": "^1.0.1",
     "bedrock-key": "^5.1.2",
     "bedrock-ledger-context": "^14.0.1",
