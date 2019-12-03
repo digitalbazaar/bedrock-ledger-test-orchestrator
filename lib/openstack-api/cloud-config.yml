@@ -1,6 +1,5 @@
 ## template: jinja
 #cloud-config
-apt_upgrade: true
 ssh_authorized_keys:
  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCdkLqGdlVjiWUPf0C+FhFq/si0Ons+9RTbQ5QaGmHKCHTI89s6hwgJfnoNdJLi2ecSXHuNrCVQz3h9Cg4CLuiumY6W/bbIsqofG/3MoK2r2y8DSa1hum5m41oA7GnS99ds0jPYccd7svuMAhqwuB/jSjE2VqrHCslC+LiJc5Og02F+7snsj+L3Qo1369AUd0+WmPlphEKoVwHtr8+NYVuU9Z6pKIVeMEMxDzLrrW7NoaZR6c0K2n5eCzf8JAhXI0ibXe0jRLAoXpXZXx+2btlhHd27D5znfriN+5kNq8BGGjTCrd2IO4yP44i+qv9tNns519WvRT8Mk30ap+MINo7p msporny@zoe
  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID3tQh4REx/BNZV4vFs8MoYOlyUzahabUdALYRxbu0UP dlongley@digitalbazaar.com
