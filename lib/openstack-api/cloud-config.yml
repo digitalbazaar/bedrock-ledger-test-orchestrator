@@ -7,8 +7,15 @@ ssh_authorized_keys:
  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBWavAnpCVUee6dVS5NsqKvB+FQVhwM2vA6IqWXEnsU9 gannan@digitalbazaar.com
  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOf2kc0+zQVkrel1KHv9KWWU1I6j3VfgM9LcZiAwPPJU mcollier@digitalbazaar.com
  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBMCK57FVhpUc3VJRlbHPP6nM31Bfyj6Y4pEm8sZ6eV/ matt@matt-Lenovo-G560-Jessie
+apt:
+ sources:
+  docker:
+   source: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+   keyid: "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
 packages:
- - docker.io
+ - docker-ce
+ - docker-ce-cli
+ - containerd.io
  - nano
 write_files:
  - encoding: b64
